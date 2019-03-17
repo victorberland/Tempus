@@ -1,0 +1,77 @@
+#!/bin/bash
+cd -- "$(dirname "$BASH_SOURCE")"
+
+
+echo "-----------------------------------------"
+echo "Tempus"
+echo "-----------------------------------------"
+
+
+slug="$2"
+file=~/tempus/$slug/horologium.txt
+
+{
+	mkdir ~/Tempus/$slug
+} &> /dev/null
+
+touch $file
+
+# ---------------------------------------
+# Start timer
+# ---------------------------------------
+if [ $1 == "start" ]
+then
+
+	startTime=$(date "+%X")
+	lines="------------------------------------"
+	echo "Started at $startTime for $slug"
+
+	date=$(date +%Y-%m-%d)
+
+	echo $lines >> $file
+	echo $date >> $file
+	echo $startTime >> $file
+
+
+
+# ---------------------------------------
+# Stop timer
+# ---------------------------------------
+elif [ $1 == "stop" ]
+then
+	startTime=$(tail -1 $file | head -1)
+	stopTime=$(date "+%X")
+	echo "Started at $startTime and stopped at $stopTime"
+
+
+	# Get difference between time
+	t2s()
+	{
+  	local T=$1;shift
+  	echo $((10#${T:0:2} * 3600 + 10#${T:3:2} * 60 + 10#${T:6:2}))
+	}
+	diff_time=$(( $(t2s $stopTime) - $(t2s $startTime) ))
+
+
+	# Show time in readable format
+	function displaytime {
+  	local T=$1
+  	local D=$((T/60/60/24))
+  	local H=$((T/60/60%24))
+  	local M=$((T/60%60))
+  	local S=$((T%60))
+  	(( $D > 0 )) && printf '%d days ' $D
+  	(( $H > 0 )) && printf '%d hours ' $H
+  	(( $M > 0 )) && printf '%d minutes ' $M
+  	(( $D > 0 || $H > 0 || $M > 0 )) && printf 'and '
+  	printf "%d seconds\n" $S
+	}
+
+	timeSpent=$(displaytime $diff_time)
+
+	echo "Spent $timeSpent on $slug"
+	
+	echo $stopTime >> $file
+	echo $timeSpent >> $file
+
+fi
