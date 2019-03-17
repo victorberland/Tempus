@@ -11,7 +11,7 @@ slug="$2"
 file=~/tempus/$slug/horologium.txt
 
 {
-	mkdir ~/Tempus/$slug
+	mkdir ~/tempus/$slug
 } &> /dev/null
 
 touch $file
