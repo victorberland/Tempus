@@ -2,7 +2,7 @@
 
 ### How to install:
 * Clone this repository into `~/Tempus` by running `git clone https://github.com/victorberland/Tempus.git`
-* Add `alias tempus='~/tempus/tempus'` to `.bash_profile`
+* Add `alias tempus='~/Tempus/tempus'` to `.bash_profile`
 
 All info generated from the timer will be saved in `~/Tempus/PROJECTNAME/horologium.txt` with the date, start time, stop time and duration.
 
