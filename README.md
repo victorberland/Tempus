@@ -1,15 +1,13 @@
 # Tempus - Time Tracking Script
 
 ### How to install:
-* Make a folder called `Tempus` in your home directory. `~/Tempus`.
-* Copy `start.sh` and `stop.sh` to `~/Tempus`.
+* Clone this repository into `~/Tempus` by running `git clone https://github.com/victorberland/Tempus.git`
+* Add `alias tempus='~/tempus/tempus'` to `.bash_profile`
 
-If you're on a Mac:
-* Copy `start.scpt` and `stop.scpt` to `~/Library/Scripts/`
-* Open `Script Editor.app in ~/Applications/Utilities`
-* Open the `Preferences` for `Script Editor` and select the option to show Script Editor in the menu bar.
-* You can now click on the newly created button in the menu bar and click on `Start` to start the timer and `Stop` to stop the timer.
+All info generated from the timer will be saved in `~/Tempus/PROJECTNAME/horologium.txt` with the date, start time, stop time and duration.
 
-For all other GNU-based systems (use Win-Bash or any equivalent of your choice if you're on Windows), you can just run the `~/Tempus/start.sh` and `~/Tempus/stop.sh` scripts to start and stop the timer. To make things easier, you can create a shortcut on your desktop to each of the scripts.
+### Usage:
+* Run `tempus start PROJECTNAME` to start the timer. If a project with this name does not exist already, a new one will be created.
+* Run `tempus stop PROJECTNAME` to stop the timer. The timer log will be in `~/Tempus/PROJECTNAME/horologium.txt`
 
-All info generated from the timer will be saved in `~/Tempus/horologium.txt` with the date, start time, stop time and duration.
+Subsitute `PROJECTNAME` with the name of your project. Use only characters allowed in folder names (no spaces).
