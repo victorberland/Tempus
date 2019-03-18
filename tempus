@@ -74,4 +74,13 @@ then
 	echo $stopTime >> $file
 	echo $timeSpent >> $file
 
+
+# ---------------------------------------
+# List
+# ---------------------------------------
+elif [ $1 == "ls" ]
+then
+	echo "Listing project $slug"
+	cat $file
+	
 fi

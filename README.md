@@ -9,5 +9,6 @@ All info generated from the timer will be saved in `~/tempus/PROJECTNAME/horolog
 ### Usage:
 * Run `tempus start PROJECTNAME` to start the timer. If a project with this name does not exist already, a new one will be created.
 * Run `tempus stop PROJECTNAME` to stop the timer. The timer log will be in `~/Tempus/PROJECTNAME/horologium.txt`
+* Run `tempus ls PROJECTNAME` to list all of the logged sessions.
 
 Subsitute `PROJECTNAME` with the name of your project. Use only characters allowed in folder names (no spaces).
